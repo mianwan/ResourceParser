@@ -112,7 +112,16 @@ public class LayoutTransform {
                         e.addAttribute("android:textColor", "#ffffffff");
                     }
                     if (e.getName().equals("LinearLayout") && e.attributeValue("background") == null) {
-                        e.addAttribute("android:background", "#ff000000");
+                        if (e.attributeValue("style") != null) {
+                            if (e.attributeValue("style") .toLowerCase().contains("actionbar")) {
+                                e.addAttribute("android:background", "#ffffffff");
+                            } else {
+                                e.addAttribute("android:background", "#ff000000");
+                            }
+
+                        } else {
+                            e.addAttribute("android:background", "#ff000000");
+                        }
                     }
                 }
 

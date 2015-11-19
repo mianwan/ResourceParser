@@ -19,7 +19,7 @@ public class StyleTransform {
     public static void main(String args[]) throws DocumentException, IOException {
 
         String sdkDir = "/home/mianwan/Desktop/4.3/framework-res";
-        String appDir = "/home/mianwan/Desktop/backup/com.financial.calculator";
+        String appDir = "/home/mianwan/Desktop/backup/com.mix.muxicdownload";
         String outputPath = "/Users/mian/Documents/Projects/newApp";
 
         String cts = "/home/mianwan/Desktop/backup/transform.txt";
@@ -266,8 +266,10 @@ public class StyleTransform {
                         if (text.startsWith("@android:style")) {
                             //                        text = text.split("/")[0].replace("android:","") + "/" + StylePrefix + text.split("/")[1];
                             String newStyle = text.split("/")[1];
-                            newStyle = newStyle.substring(0, newStyle.indexOf(".Light"));
-                            it.setText(newStyle);
+                            if (newStyle.contains(".Light")) {
+                                newStyle = newStyle.substring(0, newStyle.indexOf(".Light"));
+                                it.setText(newStyle);
+                            }
                             sdkStyles.add(text);
 
                         } else if (text.startsWith("@android:color")) {
